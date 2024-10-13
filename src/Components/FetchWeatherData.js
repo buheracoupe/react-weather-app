@@ -4,14 +4,24 @@ import { useState, useEffect } from 'react'
 import InputForm from './InputContainer'
 import BottomContainer from './BottomContainer'
 import Spinner from '../Assets/spinner.gif'
+import ToggleButton from './ToggleButton'
 
 
 function FetchGeoCodeData() {
   const [weatherData, setWeatherData] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [userInput, setUserInput] = useState("dallas")
+  const [isCelsius, setIsCelsius] = useState(false)
 
-  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=b52d1f3cb7d076773f2ee932f2eaf9ff`
+
+
+  function toggleTemp(){
+    setIsCelsius(!isCelsius)
+    console.log(isCelsius)
+  }
+   const style=isCelsius? {justifyContent: "flex-end"}: {justifyContent: "flex-start"}
+
+  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=1&appid=b52d1f3cb7d076773f2ee932f2eaf9ff`
 
 
 
@@ -58,6 +68,7 @@ return (
         <>
           <div className="top">
             < InputForm userInput = {userInput} setUserInput={setUserInput} />
+            <ToggleButton style={style} toggleTemp={toggleTemp} celsius={isCelsius} setIsCelsius={setIsCelsius}/>
             <div className='date'>
             </div>
             <div className='description'>

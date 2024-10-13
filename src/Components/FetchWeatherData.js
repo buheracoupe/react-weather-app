@@ -17,7 +17,6 @@ function FetchGeoCodeData() {
 
   function toggleTemp(){
     setIsCelsius(!isCelsius)
-    console.log(isCelsius)
   }
    const style=isCelsius? {justifyContent: "flex-end"}: {justifyContent: "flex-start"}
 
@@ -74,18 +73,21 @@ return (
             <div className='description'>
                 <div className='temp'>
                   <img className='icon' src={`https://openweathermap.org/img/wn/${weatherData[0].weather[0].icon}@2x.png`} alt='weather icon'/>
-                <h1>{(Math.floor((weatherData[0].main.temp - 273.15) * 9/5 + 32))}°F</h1>
-                </div>
+                  <h1>{isCelsius ? `${Math.floor(weatherData[0].main.temp - 273.15)}°C` : 
+                  `${Math.floor((weatherData[0].main.temp - 273.15) * 9/5 + 32)}°F`}</h1>
+                                  </div>
                 <div className='max-min'>
-                <p>{(Math.floor((weatherData[0].main.temp_min - 273.15) * 9/5 + 32))}</p>
+                <p>{isCelsius ? Math.floor(weatherData[0].main.temp_min - 273.15) :
+                 Math.floor((weatherData[0].main.temp_min - 273.15) * 9/5 + 32)}</p>
                 <div className='divider'></div>
-                <p>{(Math.floor((weatherData[0].main.temp_max - 273.15) * 9/5 + 32))}</p>
+                <p>{isCelsius ? Math.floor(weatherData[0].main.temp_max - 273.15) : 
+                Math.floor((weatherData[0].main.temp_max - 273.15) * 9/5 + 32)}</p>
                 </div>
             <p className='name'>{weatherData[0].name}, {weatherData[0].sys.country}</p>
             <p>{weatherData[0].weather[0].description}</p>
             </div>
           </div>
-         <BottomContainer weatherData={weatherData}/>
+         <BottomContainer isCelsius={isCelsius} weatherData={weatherData}/>
         </>
       )}
     </div>

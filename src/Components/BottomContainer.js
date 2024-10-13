@@ -1,11 +1,12 @@
 import React from 'react'
 
-function BottomContainer({weatherData}) {
+function BottomContainer({weatherData, isCelsius}) {
   return (
     <div className="bottom">
     <div className='feels-like'>
-      <p>{(Math.floor((weatherData[0].main.feels_like - 273.15) * 9/5 + 32))}°F</p>
-      <p className='bottom-description'>Feels Like</p>
+    <p>{isCelsius ? `${Math.floor(weatherData[0].main.feels_like - 273.15)}°C` :
+     `${Math.floor((weatherData[0].main.feels_like - 273.15) * 9/5 + 32)}°F`}</p>
+          <p className='bottom-description'>Feels Like</p>
       </div>
       <div className='humidity'>
         <p>{weatherData[0].main.humidity}%</p>

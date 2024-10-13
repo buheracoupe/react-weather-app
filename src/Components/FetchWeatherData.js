@@ -5,6 +5,7 @@ import InputForm from './InputContainer'
 import BottomContainer from './BottomContainer'
 import Spinner from '../Assets/spinner.gif'
 import ToggleButton from './ToggleButton'
+import DateContainer from './DateContainer'
 
 
 function FetchGeoCodeData() {
@@ -68,8 +69,7 @@ return (
           <div className="top">
             < InputForm userInput = {userInput} setUserInput={setUserInput} />
             <ToggleButton style={style} toggleTemp={toggleTemp} celsius={isCelsius} setIsCelsius={setIsCelsius}/>
-            <div className='date'>
-            </div>
+            <DateContainer weatherData={weatherData} />
             <div className='description'>
                 <div className='temp'>
                   <img className='icon' src={`https://openweathermap.org/img/wn/${weatherData[0].weather[0].icon}@2x.png`} alt='weather icon'/>
@@ -95,4 +95,8 @@ return (
 }
 
 
+
+
 export default FetchGeoCodeData
+
+// still to do, error handling, displaying date and time, additional input validation

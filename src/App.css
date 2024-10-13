@@ -10,15 +10,15 @@
 .App{
   font-family: "Quicksand", serif;
   font-optical-sizing: auto;
-  /* background-image: url(./Assets/pexels-martinpechy-1028185.jpg);
-  background-size: cover;
-  background-position: center; */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   height: 100vh;
   width: 100%;
   position: relative;
   color: white;
-
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  overflow: hidden;
 }
 .App::before{
   content: '';
@@ -34,7 +34,82 @@ input{
   border-right: none;
   margin-right: -.5rem;
   outline: none;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 5px;
+  width: 400px;
+  height: 30px;
+  border: none;
+}
+input:focus{
+  color: white;
 }
 input::placeholder{
   color: #ccc;
+  padding: 7px;
+  font-size: 1rem;
+}
+.top{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+}
+.top h1{
+  font-size: 4rem;
+}
+.name{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+.data-loading{
+  font-size: 3rem;
+  text-align: center;
+}
+.max-min{
+  display: flex;
+  gap: 1rem;
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 0 auto;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.divider{
+  background-color: white;
+  height: 20px;
+  width:3px;
+  border-radius: 1px;
+}
+.bottom{
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  background-color:rgba(255, 253, 253, 0.2);
+  border-radius: 5px;
+  width: 500px;
+  margin: 5rem auto;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.bottom > *{
+  text-align: center;
+}
+.bottom-description{
+  font-size: 1rem;
+  font-weight: 500;
+}
+.icon{
+  height: 8rem;
+  width: 8rem;
+}
+.loading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }

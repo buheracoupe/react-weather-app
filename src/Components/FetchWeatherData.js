@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import InputForm from './InputContainer'
+import BottomContainer from './BottomContainer'
+import Spinner from '../Assets/spinner.gif'
 
 
 function FetchGeoCodeData() {
@@ -47,16 +49,32 @@ useEffect(() => {
 return (
     <div className="container">
       {isLoading ? (
-        <p>Please be patient, Weather Data is Loading!</p>
+        <div className='loading'>
+        <p className='data-loading'>Please be patient, Weather Data is Loading!</p>
+        <img src={Spinner} alt="loading spinner" />
+        </div>
+        
       ) : (
         <>
           <div className="top">
             < InputForm userInput = {userInput} setUserInput={setUserInput} />
-            <h1>75°F</h1>
-            <p></p>
+            <div className='date'>
+            </div>
+            <div className='description'>
+                <div className='temp'>
+                  <img className='icon' src={`https://openweathermap.org/img/wn/${weatherData[0].weather[0].icon}@2x.png`} alt='weather icon'/>
+                <h1>{(Math.floor((weatherData[0].main.temp - 273.15) * 9/5 + 32))}°F</h1>
+                </div>
+                <div className='max-min'>
+                <p>{(Math.floor((weatherData[0].main.temp_min - 273.15) * 9/5 + 32))}</p>
+                <div className='divider'></div>
+                <p>{(Math.floor((weatherData[0].main.temp_max - 273.15) * 9/5 + 32))}</p>
+                </div>
+            <p className='name'>{weatherData[0].name}, {weatherData[0].sys.country}</p>
+            <p>{weatherData[0].weather[0].description}</p>
+            </div>
           </div>
-          <div className="bottom">
-          </div>
+         <BottomContainer weatherData={weatherData}/>
         </>
       )}
     </div>

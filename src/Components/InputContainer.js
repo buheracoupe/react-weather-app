@@ -10,10 +10,18 @@ function InputForm({userInput, setUserInput}) {
         console.log(data.city)
         reset();
     }
+
+    const validationObject = {
+        required: "Please Enter a City Name to Get Weather Data.....",
+        validate: (value) => {
+          const trimmedValue = value.trim().toLowerCase();
+          return trimmedValue !== value || trimmedValue.length === 0 ? 'Invalid city name' : true;
+        },
+      };
+    
   return (
 <form onSubmit={handleSubmit(onSubmit)} className='input-container'>
-    <input name='city' {...register("city",  {required: true})} type="text" placeholder='Type City to Get Weather Here'/>
-    <button>Get Weather</button>
+    <input name='city' {...register("city", validationObject)} type="text" placeholder='Type City to Get Weather Here...'/>
 </form> )
 }
 
